@@ -1,10 +1,30 @@
 const rankTest = require('ava');
+const {rating} = require('../src/rank');
 
-rankTest('foo', t => {
-  t.pass();
-});
+rankTest('ranking case default', t => {
+  const voyage = {
+    zone: 'west-indies',
+    length: 10,
+  };
 
-rankTest('bar', async t => {
-  const bar = Promise.resolve('bar');
-  t.is(await bar, 'bar');
+  const history = [
+    {
+      zone: 'east-indies',
+      profit: 5,
+    },{
+      zone: 'west-indies',
+      profit: 15,
+    },{
+      zone: 'china',
+      profit: -2,
+    },
+    {
+      zone: 'west-africa',
+      profit: 7,
+    },
+  ];
+
+  const result = rating (voyage, history);
+
+  t.is(result, 'B');
 });
