@@ -84,3 +84,32 @@ rankTest('ranking case 3 for voyageProfitFactor should return 6', t => {
 
   t.is(result, 6);
 });
+
+rankTest('ranking case 4 for voyageProfitFactor should return 7', t => {
+  const voyage = {
+    zone: 'china',
+    length: 10,
+  };
+
+  const history = [
+    {
+      zone: 'east-indies',
+      profit: 5,
+    },{
+      zone: 'west-indies',
+      profit: 15,
+    },{
+      zone: 'china',
+      profit: -2,
+    },
+    {
+      zone: 'west-africa',
+      profit: 7,
+    },
+    {},{},{},{},{},{},{},{}
+  ];
+
+  const result = voyageProfitFactor (voyage, history);
+
+  t.is(result, 7);
+});
