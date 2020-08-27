@@ -1,7 +1,7 @@
 const rankTest = require('ava');
 const {rating} = require('../src/rank');
 
-rankTest('ranking case 1 for rating when voyage.zone is west-indies', t => {
+rankTest('ranking case 1 for rating when voyage.zone is west-indies should be B', t => {
   const voyage = {
     zone: 'west-indies',
     length: 10,
@@ -29,7 +29,7 @@ rankTest('ranking case 1 for rating when voyage.zone is west-indies', t => {
   t.is(result, 'B');
 });
 
-rankTest('ranking case 2 when for rating voyage.zone is china', t => {
+rankTest('ranking case 2 for rating when voyage.zone is china should be A', t => {
   const voyage = {
     zone: 'china',
     length: 10,
