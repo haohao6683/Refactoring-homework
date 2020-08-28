@@ -1,3 +1,16 @@
+function calOutstanding(invoice) {
+  let outstanding = 0;
+  for (const o of invoice.borderSpacing) {
+    outstanding += o.amount;
+  }
+  return outstanding;
+}
+
+function calDueDate() {
+   const today = new Date();
+   return new Date(today.getFullYear(), today.getMonth(), today.getDate() + 30);
+}
+
 function printOwing (invoice) {
   let result = '';
   let outstanding = 0;
@@ -5,14 +18,8 @@ function printOwing (invoice) {
   result += '**** Customer Owes ****';
   result += '***********************';
 
-  // calculate outstanding
-  for (const o of invoice.borderSpacing) {
-    outstanding += o.amount;
-  }
-
-  // record due date
-  const today = new Date();
-  invoice.dueDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 30);
+  outstanding = calOutstanding(invoice);
+  invoice.dueDate = calDueDate();
 
   // print details
   result += `name: ${invoice.customer}`;
